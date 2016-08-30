@@ -66,7 +66,7 @@ static NSString *const kChangeEmailText = @"Change Email";
 static NSString *const kChangePasswordText = @"Change Password";
 
 
-@interface MainViewController ()
+@interface MainViewController () <TencentSessionDelegate>
 {
     TencentOAuth *_tencentOAuth;
     NSArray *_permissions;
