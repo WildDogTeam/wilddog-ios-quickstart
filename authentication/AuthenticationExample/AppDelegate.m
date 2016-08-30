@@ -7,26 +7,97 @@
 //
 
 #import "AppDelegate.h"
-#import <TencentOpenAPI/TencentOAuth.h>
+#import <WilddogAuth.h>
 
-@interface AppDelegate ()
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+
+#import "Utils.h"
+
+@interface AppDelegate () <WXApiDelegate,WeiboSDKDelegate>
 
 @end
+
+#define    WX_KEY         @"1234567890"
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //向微信注册
+    [WXApi registerApp:WX_KEY];
+    
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    return [TencentOAuth HandleOpenURL:url];
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if ([url.absoluteString hasPrefix:@"wx"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }else if ([url.absoluteString hasPrefix:@"wb"]) {
+        return [WeiboSDK handleOpenURL:url delegate:self ];
+    }else if ([url.absoluteString hasPrefix:@"tencent"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return NO;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-    return [TencentOAuth HandleOpenURL:url];
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([url.absoluteString hasPrefix:@"wx"]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }else if ([url.absoluteString hasPrefix:@"wb"]) {
+        return [WeiboSDK handleOpenURL:url delegate:self ];
+    }else if ([url.absoluteString hasPrefix:@"tencent"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }
+    return NO;
+}
+
+#pragma mark - WeiChatSDKDelegate
+-(void) onReq:(BaseReq*)req
+{
+    
+}
+/*! @brief 发送一个sendReq后，收到微信的回应
+ *
+ * 收到一个来自微信的处理结果。调用一次sendReq后会收到onResp。
+ * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。
+ * @param resp具体的回应内容，是自动释放的
+ */
+-(void) onResp:(BaseResp*)resp
+{
+    if([resp isKindOfClass:[SendAuthResp class]])
+    {
+        SendAuthResp *response = (SendAuthResp*)resp;
+        if(response.code.length == 0){
+            return;
+        }
+        WDGAuth *auth = [Utils auth];
+        WDGAuthCredential *credential = [WDGWeiXinAuthProvider credentialWithCode:response.code];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeixinSignIn" object:credential userInfo:nil];
+    }
+}
+
+#pragma mark - WeiboSDKDelegate
+
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response
+{
+    if ([response isKindOfClass:WBAuthorizeResponse.class])
+    {
+        WBAuthorizeResponse *wbResponse = (WBAuthorizeResponse *)response;
+        if (wbResponse.accessToken == nil || wbResponse.userID == nil) {
+            return;
+        }
+        WDGAuth *auth = [Utils auth];
+        WDGAuthCredential *credential = [WDGSinaAuthProvider credentialWithAccessToken:wbResponse.accessToken userID:wbResponse.userID];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeiboSignIn" object:credential userInfo:nil];
+    }
 }
 
 

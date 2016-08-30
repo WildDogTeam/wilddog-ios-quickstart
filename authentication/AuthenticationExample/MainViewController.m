@@ -11,6 +11,7 @@
 #import "Utils.h"
 
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
 
 @import Wilddog;
 @import WilddogAuth;
@@ -145,34 +146,17 @@ static NSString *const kChangePasswordText = @"Change Password";
                 break;
             case AuthWeixin: {
                 action = [UIAlertAction actionWithTitle:@"Weixin" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-//                    [loginManager
-//                     logInWithReadPermissions:@[ @"public_profile", @"email" ]
-//                     fromViewController:self
-//                     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-//                         if (error) {
-//                             [self showMessagePrompt:error.localizedDescription];
-//                         } else if (result.isCancelled) {
-//                             NSLog(@"FBLogin cancelled");
-//                         } else {
-//                             // [START headless_facebook_auth]
-//                             FIRAuthCredential *credential = [FIRFacebookAuthProvider
-//                                                              credentialWithAccessToken:[FBSDKAccessToken currentAccessToken]
-//                                                              .tokenString];
-//                             // [END headless_facebook_auth]
-//                             [self wilddogLoginWithCredential:credential];
-//                         }
-//                     }];
                     
+                    SendAuthReq *req = [SendAuthReq new];
+                    req.scope = @"snsapi_userinfo" ;
+                    req.state = @"osc_wechat_login" ;
+                    //第三方向微信终端发送一个SendAuthReq消息结构
+                    [WXApi sendReq:req];
                 }];
             }
                 break;
             case AuthSina: {
                 action = [UIAlertAction actionWithTitle:@"Sina" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
-//                    [GIDSignIn sharedInstance].uiDelegate = self;
-//                    [GIDSignIn sharedInstance].delegate = self;
-//                    [[GIDSignIn sharedInstance] signIn];
                     
                 }];
             }
@@ -242,23 +226,23 @@ static NSString *const kChangePasswordText = @"Change Password";
 }
 
 - (IBAction)didTapLink:(id)sender {
-//    NSMutableArray *providers = [@[@(AuthQQ),
-//                                   @(AuthWeixin),
-//                                   @(AuthSina)] mutableCopy];
-//    
-//    // Remove any existing providers. Note that this is not a complete list of
-//    // providers, so always check the documentation for a complete reference:
+    NSMutableArray *providers = [@[@(AuthQQ),
+                                   @(AuthWeixin),
+                                   @(AuthSina)] mutableCopy];
+    
+    // Remove any existing providers. Note that this is not a complete list of
+    // providers, so always check the documentation for a complete reference:
 
-//    for (id<WDGUserInfo> userInfo in [Utils auth].currentUser.providerData) {
-//        if ([userInfo.providerID isEqualToString:WDGQQAuthProviderID]) {
-//            [providers removeObject:@(AuthQQ)];
-//        } else if ([userInfo.providerID isEqualToString:WDGWeixinAuthProviderID]) {
-//            [providers removeObject:@(AuthWeixin)];
-//        } else if ([userInfo.providerID isEqualToString:WDGSinaAuthProviderID]) {
-//            [providers removeObject:@(AuthSina)];
-//        }
-//    }
-//    [self showAuthPicker:providers];
+    for (id<WDGUserInfo> userInfo in [Utils auth].currentUser.providerData) {
+        if ([userInfo.providerID isEqualToString:WDGQQAuthProviderID]) {
+            [providers removeObject:@(AuthQQ)];
+        } else if ([userInfo.providerID isEqualToString:WDGWeiXinAuthProviderID]) {
+            [providers removeObject:@(AuthWeixin)];
+        } else if ([userInfo.providerID isEqualToString:WDGSinaAuthProviderID]) {
+            [providers removeObject:@(AuthSina)];
+        }
+    }
+    [self showAuthPicker:providers];
 }
 
 - (IBAction)didTapSignOut:(id)sender {
@@ -272,25 +256,6 @@ static NSString *const kChangePasswordText = @"Change Password";
     // [END signout]
 }
 
-//// [START headless_google_auth]
-//- (void)signIn:(GIDSignIn *)signIn
-//didSignInForUser:(GIDGoogleUser *)user
-//     withError:(NSError *)error {
-//    if (error == nil) {
-//        GIDAuthentication *authentication = user.authentication;
-//        FIRAuthCredential *credential =
-//        [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
-//                                         accessToken:authentication.accessToken];
-//        // [START_EXCLUDE]
-//        [self wilddogLoginWithCredential:credential];
-//        // [END_EXCLUDE]
-//    } else
-//        // [START_EXCLUDE]
-//        [self showMessagePrompt:error.localizedDescription];
-//    // [END_EXCLUDE]
-//}
-//// [END headless_google_auth]
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.handle = [[Utils auth]
@@ -298,6 +263,14 @@ static NSString *const kChangePasswordText = @"Change Password";
                        [self setTitleDisplay:user];
                        [self.tableView reloadData];
                    }];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wilddogLoginWithCredential:) name:@"WeixinSignIn" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wilddogLoginWithCredential:) name:@"WeiboSignIn" object:nil];
 }
 
 - (void)setTitleDisplay: (WDGUser *)user {
