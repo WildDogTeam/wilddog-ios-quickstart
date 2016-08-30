@@ -1,0 +1,16 @@
+# AuthenticationExample
+
+use_frameworks!
+platform :ios, '7.0'
+# [START auth_pod]
+pod 'Wilddog'
+# [END auth_pod]
+
+
+target 'AuthenticationExample' do
+end
+
+#target 'AuthenticationExampleSwift' do
+#end
+
+
