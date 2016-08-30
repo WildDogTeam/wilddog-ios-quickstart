@@ -76,7 +76,17 @@ static NSString *const kChangePasswordText = @"Change Password";
 
 @implementation MainViewController
 
-- (void)wilddogLoginWithCredential:(WDGAuthCredential *)credential {
+- (void)wilddogLoginWithCredential:(id)object {
+    
+    WDGAuthCredential *credential ;
+    NSDictionary *userInfo = ((NSNotification *)object).userInfo;
+    
+    if ([credential isKindOfClass:[NSNotification class]]) {
+        credential = [userInfo objectForKey:@"credential"];
+    }else{
+        credential = object;
+    }
+    
     [self showSpinner:^{
         if ([Utils auth].currentUser) {
             // [START link_credential]
