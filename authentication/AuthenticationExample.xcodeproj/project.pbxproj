@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		299DCBDCF2AFBBDADB723762 /* Pods_AuthenticationExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A4930BA4EB0373C50FA9FF3 /* Pods_AuthenticationExample.framework */; };
+		39001CA11D758E7700E4F21B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 39001C9F1D758E7700E4F21B /* TencentOpenApi_IOS_Bundle.bundle */; };
+		39001CA21D758E7700E4F21B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39001CA01D758E7700E4F21B /* TencentOpenAPI.framework */; };
 		3988E6F91D744033002C1E5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E6F81D744033002C1E5F /* main.m */; };
 		3988E6FC1D744033002C1E5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E6FB1D744033002C1E5F /* AppDelegate.m */; };
 		3988E7021D744033002C1E5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3988E7001D744033002C1E5F /* Main.storyboard */; };
@@ -28,10 +30,6 @@
 		3988E74A1D756F49002C1E5F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7491D756F49002C1E5F /* CoreTelephony.framework */; };
 		3988E74C1D756F55002C1E5F /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E74B1D756F55002C1E5F /* libstdc++.tbd */; };
 		3988E74E1D756F5D002C1E5F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E74D1D756F5D002C1E5F /* libz.tbd */; };
-		3988E7541D757232002C1E5F /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3988E7531D757232002C1E5F /* TencentOpenApi_IOS_Bundle.bundle */; };
-		3988E7561D757251002C1E5F /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7551D757251002C1E5F /* TencentOpenAPI.framework */; };
-		3988E7571D757298002C1E5F /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7551D757251002C1E5F /* TencentOpenAPI.framework */; };
-		3988E7581D757298002C1E5F /* TencentOpenAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7551D757251002C1E5F /* TencentOpenAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +64,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3988E7291D746315002C1E5F /* WilddogAuth.framework in Embed Frameworks */,
-				3988E7581D757298002C1E5F /* TencentOpenAPI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39001C9F1D758E7700E4F21B /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+		39001CA01D758E7700E4F21B /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		3988E6F41D744033002C1E5F /* AuthenticationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthenticationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3988E6F81D744033002C1E5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3988E6FA1D744033002C1E5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,8 +101,6 @@
 		3988E7491D756F49002C1E5F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3988E74B1D756F55002C1E5F /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3988E74D1D756F5D002C1E5F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		3988E7531D757232002C1E5F /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = AuthenticationExample/TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		3988E7551D757251002C1E5F /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = AuthenticationExample/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		3DF79200ADAAC2C56CF43A4D /* Pods-AuthenticationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthenticationExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AuthenticationExample/Pods-AuthenticationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		6A4930BA4EB0373C50FA9FF3 /* Pods_AuthenticationExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthenticationExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B599B6E8CD59C41FD56D0150 /* Pods-AuthenticationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthenticationExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AuthenticationExample/Pods-AuthenticationExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3988E74E1D756F5D002C1E5F /* libz.tbd in Frameworks */,
-				3988E7571D757298002C1E5F /* TencentOpenAPI.framework in Frameworks */,
 				3988E74C1D756F55002C1E5F /* libstdc++.tbd in Frameworks */,
 				3988E74A1D756F49002C1E5F /* CoreTelephony.framework in Frameworks */,
 				3988E7481D756F41002C1E5F /* libsqlite3.tbd in Frameworks */,
@@ -123,7 +119,7 @@
 				3988E7441D756F2D002C1E5F /* SystemConfiguration.framework in Frameworks */,
 				3988E7421D756F25002C1E5F /* libiconv.tbd in Frameworks */,
 				3988E7401D756F16002C1E5F /* Security.framework in Frameworks */,
-				3988E7561D757251002C1E5F /* TencentOpenAPI.framework in Frameworks */,
+				39001CA21D758E7700E4F21B /* TencentOpenAPI.framework in Frameworks */,
 				299DCBDCF2AFBBDADB723762 /* Pods_AuthenticationExample.framework in Frameworks */,
 				3988E7281D746315002C1E5F /* WilddogAuth.framework in Frameworks */,
 			);
@@ -195,8 +191,8 @@
 		6FDA60F93107550B8E8D03B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3988E7531D757232002C1E5F /* TencentOpenApi_IOS_Bundle.bundle */,
-				3988E7551D757251002C1E5F /* TencentOpenAPI.framework */,
+				39001C9F1D758E7700E4F21B /* TencentOpenApi_IOS_Bundle.bundle */,
+				39001CA01D758E7700E4F21B /* TencentOpenAPI.framework */,
 				3988E74D1D756F5D002C1E5F /* libz.tbd */,
 				3988E74B1D756F55002C1E5F /* libstdc++.tbd */,
 				3988E7491D756F49002C1E5F /* CoreTelephony.framework */,
@@ -306,7 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3988E7541D757232002C1E5F /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				39001CA11D758E7700E4F21B /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				3988E7071D744033002C1E5F /* LaunchScreen.storyboard in Resources */,
 				3988E7041D744033002C1E5F /* Assets.xcassets in Resources */,
 				3988E7021D744033002C1E5F /* Main.storyboard in Resources */,
@@ -500,6 +496,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AuthenticationExample",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../sdk-ios-auth/WilddogAuth/Public\"";
 				INFOPLIST_FILE = AuthenticationExample/Info.plist;
@@ -524,6 +521,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AuthenticationExample",
+					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../../sdk-ios-auth/WilddogAuth/Public\"";
 				INFOPLIST_FILE = AuthenticationExample/Info.plist;

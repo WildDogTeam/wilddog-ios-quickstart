@@ -10,7 +10,7 @@
 #import "UIViewController+Alerts.h"
 #import "Utils.h"
 
-//#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 @import Wilddog;
 @import WilddogAuth;
@@ -67,8 +67,8 @@ static NSString *const kChangePasswordText = @"Change Password";
 
 @interface MainViewController ()
 {
-//    TencentOAuth *_tencentOAuth;
-//    NSArray *_permissions;
+    TencentOAuth *_tencentOAuth;
+    NSArray *_permissions;
 }
 @property(strong, nonatomic) WDGAuthStateDidChangeListenerHandle handle;
 @end
@@ -137,21 +137,9 @@ static NSString *const kChangePasswordText = @"Change Password";
             {
                 action = [UIAlertAction actionWithTitle:@"QQ" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-//                    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"222222" andDelegate:self];
-//                     _permissions =  [NSArray arrayWithObjects:@"get_user_info", @"get_simple_userinfo", @"add_t", nil];
-                    
-//                    [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
-//                        if (session) {
-//                            // [START headless_twitter_auth]
-//                            FIRAuthCredential *credential =
-//                            [FIRTwitterAuthProvider credentialWithToken:session.authToken
-//                                                                 secret:session.authTokenSecret];
-//                            // [END headless_twitter_auth]
-//                            [self wilddogLoginWithCredential:credential];
-//                        } else {
-//                            [self showMessagePrompt:error.localizedDescription];
-//                        }
-//                    }];
+                    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"222222" andDelegate:self];
+                     _permissions =  [NSArray arrayWithObjects:@"get_user_info", @"get_simple_userinfo", @"add_t", nil];
+                    [_tencentOAuth authorize: _permissions inSafari:NO];
                 }];
             }
                 break;
@@ -220,15 +208,29 @@ static NSString *const kChangePasswordText = @"Change Password";
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-//- (void)tencentDidLogin
-//{
-//    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length])
-//    {
-//        //  记录登录用户的OpenID、Token以及过期时间
-//        _tencentOAuth.accessToken;
-//    }
-//}
+- (void)tencentDidLogin
+{
+    if (_tencentOAuth.accessToken && 0 != [_tencentOAuth.accessToken length])
+    {
+        // [START headless_twitter_auth]
+        WDGAuthCredential *credential = [WDGQQAuthProvider credentialWithAccessToken:_tencentOAuth.accessToken];
+        
+        // [END headless_twitter_auth]
+        [self wilddogLoginWithCredential:credential];
+    }
+}
 
+//非网络错误导致登录失败：
+-(void)tencentDidNotLogin:(BOOL)cancelled
+{
+    [self showMessagePrompt:@"登录失败"];
+}
+
+//网络错误导致登录失败：
+-(void)tencentDidNotNetWork
+{
+    [self showMessagePrompt:@"登录失败"];
+}
 
 - (IBAction)didTapSignIn:(id)sender {
     [self showAuthPicker:@[@(AuthEmail),
