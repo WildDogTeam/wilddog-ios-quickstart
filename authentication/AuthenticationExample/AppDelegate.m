@@ -76,7 +76,6 @@
         if(response.code.length == 0){
             return;
         }
-        WDGAuth *auth = [Utils auth];
         WDGAuthCredential *credential = [WDGWeiXinAuthProvider credentialWithCode:response.code];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WeixinSignIn" object:credential userInfo:nil];
@@ -93,7 +92,6 @@
         if (wbResponse.accessToken == nil || wbResponse.userID == nil) {
             return;
         }
-        WDGAuth *auth = [Utils auth];
         WDGAuthCredential *credential = [WDGSinaAuthProvider credentialWithAccessToken:wbResponse.accessToken userID:wbResponse.userID];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WeiboSignIn" object:credential userInfo:nil];
