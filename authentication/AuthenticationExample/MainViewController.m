@@ -11,10 +11,13 @@
 #import "Utils.h"
 
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "WeiboSDK.h"
 #import "WXApi.h"
 
 @import Wilddog;
 @import WilddogAuth;
+
+#define    QQ_KEY         @"1105019767"
 
 static const int kSectionToken = 3;
 static const int kSectionProviders = 2;
@@ -148,7 +151,7 @@ static NSString *const kChangePasswordText = @"Change Password";
             {
                 action = [UIAlertAction actionWithTitle:@"QQ" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-                    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"222222" andDelegate:self];
+                    _tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQ_KEY andDelegate:self];
                      _permissions =  [NSArray arrayWithObjects:@"get_user_info", @"get_simple_userinfo", @"add_t", nil];
                     [_tencentOAuth authorize: _permissions inSafari:NO];
                 }];
@@ -157,17 +160,28 @@ static NSString *const kChangePasswordText = @"Change Password";
             case AuthWeixin: {
                 action = [UIAlertAction actionWithTitle:@"Weixin" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-                    SendAuthReq *req = [SendAuthReq new];
+                    if ([WXApi isWXAppInstalled] == NO) {
+                        [self showMessagePrompt:@"安装微信客户端后才可以登录"];
+                        return;
+                    }
+                    SendAuthReq* req =[[SendAuthReq alloc] init];
                     req.scope = @"snsapi_userinfo" ;
-                    req.state = @"osc_wechat_login" ;
+                    req.state = @"123";
                     //第三方向微信终端发送一个SendAuthReq消息结构
                     [WXApi sendReq:req];
+
                 }];
             }
                 break;
             case AuthSina: {
                 action = [UIAlertAction actionWithTitle:@"Sina" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
+                    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+                    request.redirectURI = @"https://api.weibo.com/oauth2/default.html";
+                    request.scope = @"email,direct_messages_write";
+                    request.userInfo = @{@"SSO_From": @"WDLoginViewController",
+                                         @"Other_Info_1": [NSNumber numberWithInt:123], @"Other_Info_2": @[@"obj1", @"obj2"],
+                                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+                    [WeiboSDK sendRequest:request];
                 }];
             }
                 break;

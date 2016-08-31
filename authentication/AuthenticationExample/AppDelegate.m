@@ -8,27 +8,30 @@
 
 #import "AppDelegate.h"
 #import <WilddogAuth.h>
+#import "Utils.h"
 
+//引入第三方库
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
-#import "Utils.h"
+#define WeiXin_KEY        @"wxbdab7c25336b52ef"
+#define WeiBo_KEY         @"1234567890"
 
 @interface AppDelegate () <WXApiDelegate,WeiboSDKDelegate>
 
 @end
 
-#define    WX_KEY         @"1234567890"
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     //向微信注册
-    [WXApi registerApp:WX_KEY];
+    [WXApi registerApp:WeiXin_KEY];
+    
+    //向微博注册
+    [WeiboSDK registerApp:WeiBo_KEY];
     
     return YES;
 }

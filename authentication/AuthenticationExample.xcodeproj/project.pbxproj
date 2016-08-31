@@ -589,7 +589,7 @@
 					"\"Wilddog\"",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuthenticationExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.CFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -619,7 +619,7 @@
 					"\"Wilddog\"",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuthenticationExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.CFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
