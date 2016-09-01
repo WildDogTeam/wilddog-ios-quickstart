@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <WilddogAuth.h>
+@import WilddogAuth;
 #import "Utils.h"
 
 //引入第三方库

@@ -409,7 +409,7 @@
                                     <constraint firstAttribute="width" constant="240" id="t7r-at-qba"/>
                                     <constraint firstAttribute="height" constant="145" id="v8R-rc-w3Z"/>
                                 </constraints>
-                                <string key="text">Please enter your custom token here, which is signed using the private key from a service account downloaded from the Google Developer Console</string>
+                                <string key="text">Please enter your custom token here, which is signed using the private key from a service account downloaded from the Wilddog Developer Console</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54436961210000001" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

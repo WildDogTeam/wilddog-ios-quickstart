@@ -14,7 +14,7 @@
 #import "WeiboSDK.h"
 #import "WXApi.h"
 
-@import Wilddog;
+#import "Wilddog.h"
 @import WilddogAuth;
 
 #define    QQ_KEY         @"1105019767"
