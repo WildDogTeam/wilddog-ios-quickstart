@@ -82,9 +82,8 @@ static NSString *const kChangePasswordText = @"Change Password";
 - (void)wilddogLoginWithCredential:(id)object {
     
     WDGAuthCredential *credential ;
-    NSDictionary *userInfo = ((NSNotification *)object).userInfo;
-    
-    if ([credential isKindOfClass:[NSNotification class]]) {
+    if ([object isKindOfClass:[NSNotification class]]) {
+        NSDictionary *userInfo = ((NSNotification *)object).userInfo;
         credential = [userInfo objectForKey:@"credential"];
     }else{
         credential = object;
@@ -293,7 +292,7 @@ static NSString *const kChangePasswordText = @"Change Password";
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wilddogLoginWithCredential:) name:@"WeixinSignIn" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wilddogLoginWithCredential:) name:@"WeiXinSignIn" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wilddogLoginWithCredential:) name:@"WeiboSignIn" object:nil];
 }
 

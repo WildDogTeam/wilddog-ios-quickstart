@@ -17,7 +17,7 @@
 #import "WeiboSDK.h"
 
 #define WeiXin_KEY        @"wxca57c139d7ab1a5f"
-#define WeiBo_KEY         @"1234567890"
+#define WeiBo_KEY         @"57753611"
 
 @interface AppDelegate () <WXApiDelegate,WeiboSDKDelegate>
 
@@ -82,7 +82,7 @@
         }
         WDGAuthCredential *credential = [WDGWeiXinAuthProvider credentialWithCode:response.code];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeixinSignIn" object:nil userInfo:@{@"credential":credential}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WeiXinSignIn" object:nil userInfo:@{@"credential":credential}];
     }
 }
 

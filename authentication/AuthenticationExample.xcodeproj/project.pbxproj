@@ -514,7 +514,7 @@
 					"-ObjC",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuthenticationExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.quickstart.AuthenticationExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -542,7 +542,7 @@
 					"-ObjC",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AuthenticationExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wilddog.quickstart.AuthenticationExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
