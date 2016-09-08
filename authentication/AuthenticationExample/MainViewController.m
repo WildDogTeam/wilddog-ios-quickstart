@@ -17,7 +17,7 @@
 #import "Wilddog.h"
 @import WilddogAuth;
 
-#define    QQ_KEY         @"1105019767"
+#define    QQ_KEY         @"1105605487"
 
 static const int kSectionToken = 3;
 static const int kSectionProviders = 2;
@@ -160,10 +160,10 @@ static NSString *const kChangePasswordText = @"Change Password";
             case AuthWeixin: {
                 action = [UIAlertAction actionWithTitle:@"Weixin" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     
-                    if ([WXApi isWXAppInstalled] == NO) {
-                        [self showMessagePrompt:@"安装微信客户端后才可以登录"];
-                        return;
-                    }
+//                    if ([WXApi isWXAppInstalled] == NO) {
+//                        [self showMessagePrompt:@"安装微信客户端后才可以登录"];
+//                        return;
+//                    }
                     SendAuthReq* req =[[SendAuthReq alloc] init];
                     req.scope = @"snsapi_userinfo" ;
                     req.state = @"123";

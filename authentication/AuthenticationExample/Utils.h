@@ -12,7 +12,7 @@
 /**
  *  Wilddog appID
  */
-static NSString *const kWilddogAppID = @"14789";
+static NSString *const kWilddogAppID = @"unittest";
 
 @interface Utils : NSObject
 

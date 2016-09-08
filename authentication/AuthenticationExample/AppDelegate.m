@@ -16,7 +16,7 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
-#define WeiXin_KEY        @"wxbdab7c25336b52ef"
+#define WeiXin_KEY        @"wxca57c139d7ab1a5f"
 #define WeiBo_KEY         @"1234567890"
 
 @interface AppDelegate () <WXApiDelegate,WeiboSDKDelegate>
