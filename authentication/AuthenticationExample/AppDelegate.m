@@ -9,13 +9,14 @@
 #import "AppDelegate.h"
 @import WilddogAuth;
 @import WilddogSync;
-#import "Utils.h"
+@import WilddogCore;
 
 //引入第三方库
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
+#define kWilddogUrl       @"https://unittest.wilddogio.com"
 #define WeiXin_KEY        @"wxca57c139d7ab1a5f"
 #define WeiBo_KEY         @"57753611"
 
@@ -27,6 +28,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //初始化
+    WDGOptions *option = [[WDGOptions alloc] initWithSyncURL:kWilddogUrl];
+    [WDGApp configureWithOptions:option];
     
     //向微信注册
     [WXApi registerApp:WeiXin_KEY];

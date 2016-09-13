@@ -8,7 +8,6 @@
 
 #import "EmailViewController.h"
 #import "UIViewController+Alerts.h"
-#import "Utils.h"
 
 @import WilddogAuth;
 
@@ -26,7 +25,7 @@
 - (IBAction)didTapEmailLogin:(id)sender {
   [self showSpinner:^{
     // [START headless_email_auth]
-    [[Utils auth] signInWithEmail:_emailField.text
+    [[WDGAuth auth] signInWithEmail:_emailField.text
                            password:_passwordField.text
                          completion:^(WDGUser *user, NSError *error) {
                            // [START_EXCLUDE]
@@ -56,7 +55,7 @@
 
                        [self showSpinner:^{
                          // [START password_reset]
-                         [[Utils auth]
+                         [[WDGAuth auth]
                              sendPasswordResetWithEmail:userInput
                                              completion:^(NSError *_Nullable error) {
                                                // [START_EXCLUDE]
@@ -91,7 +90,7 @@
 
                        [self showSpinner:^{
                          // [START get_providers]
-                         [[Utils auth]
+                         [[WDGAuth auth]
                              fetchProvidersForEmail:userInput
                                          completion:^(NSArray<NSString *> *_Nullable providers,
                                                       NSError *_Nullable error) {
@@ -130,7 +129,7 @@
 
                                             [self showSpinner:^{
                                               // [START create_user]
-                                              [[Utils auth]
+                                              [[WDGAuth auth]
                                                   createUserWithEmail:email
                                                              password:password
                                                            completion:^(WDGUser *_Nullable user,

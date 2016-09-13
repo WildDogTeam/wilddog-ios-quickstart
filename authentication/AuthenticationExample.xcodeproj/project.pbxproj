@@ -29,7 +29,6 @@
 		3988E7131D745C65002C1E5F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E7121D745C65002C1E5F /* MainViewController.m */; };
 		3988E7351D752DF6002C1E5F /* CustomTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E7321D752DF6002C1E5F /* CustomTokenViewController.m */; };
 		3988E7361D752DF6002C1E5F /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E7341D752DF6002C1E5F /* EmailViewController.m */; };
-		3988E7391D752EBA002C1E5F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988E7381D752EBA002C1E5F /* Utils.m */; };
 		3988E7401D756F16002C1E5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E73F1D756F16002C1E5F /* Security.framework */; };
 		3988E7421D756F25002C1E5F /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7411D756F25002C1E5F /* libiconv.tbd */; };
 		3988E7441D756F2D002C1E5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988E7431D756F2D002C1E5F /* SystemConfiguration.framework */; };
@@ -96,8 +95,6 @@
 		3988E7321D752DF6002C1E5F /* CustomTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTokenViewController.m; sourceTree = "<group>"; };
 		3988E7331D752DF6002C1E5F /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
 		3988E7341D752DF6002C1E5F /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
-		3988E7371D752EBA002C1E5F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		3988E7381D752EBA002C1E5F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		3988E73F1D756F16002C1E5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3988E7411D756F25002C1E5F /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		3988E7431D756F2D002C1E5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -190,8 +187,6 @@
 				3988E7321D752DF6002C1E5F /* CustomTokenViewController.m */,
 				3988E7331D752DF6002C1E5F /* EmailViewController.h */,
 				3988E7341D752DF6002C1E5F /* EmailViewController.m */,
-				3988E7371D752EBA002C1E5F /* Utils.h */,
-				3988E7381D752EBA002C1E5F /* Utils.m */,
 				3988E7001D744033002C1E5F /* Main.storyboard */,
 				3988E7031D744033002C1E5F /* Assets.xcassets */,
 				3988E7051D744033002C1E5F /* LaunchScreen.storyboard */,
@@ -380,7 +375,6 @@
 				3988E6F91D744033002C1E5F /* main.m in Sources */,
 				3988E7361D752DF6002C1E5F /* EmailViewController.m in Sources */,
 				3988E7101D745063002C1E5F /* UIViewController+Alerts.m in Sources */,
-				3988E7391D752EBA002C1E5F /* Utils.m in Sources */,
 				3988E7131D745C65002C1E5F /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

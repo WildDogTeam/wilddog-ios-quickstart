@@ -8,7 +8,6 @@
 
 #import "CustomTokenViewController.h"
 #import "UIViewController+Alerts.h"
-#import "Utils.h"
 
 // [START auth_view_import]
 @import WilddogAuth;
@@ -27,7 +26,7 @@
   NSString *customToken = _tokenField.text;
   [self showSpinner:^{
     // [START signinwithcustomtoken]
-    [[Utils auth] signInWithCustomToken:customToken
+    [[WDGAuth auth] signInWithCustomToken:customToken
                                completion:^(WDGUser *_Nullable user,
                                             NSError *_Nullable error) {
                                  // [START_EXCLUDE]
